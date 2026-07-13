@@ -1,0 +1,78 @@
+---
+// src/components/Header.astro
+---
+
+<header class="header">
+  <div class="header__container">
+    <a href="/" class="header__logo" aria-label="Servicios AZ Inmobiliarios - Inicio">
+      <img src="/images/logo-full.svg" alt="Servicios AZ Inmobiliarios" width="180" />
+    </a>
+
+    <nav class="header__nav">
+      <a href="/propiedades/venta">Venta</a>
+      <a href="/propiedades/renta">Renta</a>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/blog">Blog</a>
+      <a href="/nosotros">Nosotros</a>
+      <a href="/contacto" class="header__cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__logo img {
+    height: 44px;
+    width: auto;
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header__nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color 0.2s ease;
+  }
+
+  .header__nav a:hover {
+    color: var(--color-blue-medium);
+  }
+
+  .header__cta {
+    background-color: var(--color-blue-dark);
+    color: var(--color-white) !important;
+    padding: 0.6rem 1.25rem;
+    border-radius: 6px;
+  }
+
+  .header__cta:hover {
+    background-color: var(--color-blue-medium) !important;
+  }
+
+  @media (max-width: 768px) {
+    .header__nav {
+      display: none;
+    }
+  }
+</style>
