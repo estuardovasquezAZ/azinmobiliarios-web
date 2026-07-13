@@ -1,0 +1,40 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Servicios AZ Inmobiliarios | Bienes Raíces en Guatemala",
+  description = "Encuentra tu próxima propiedad en venta o renta con Servicios AZ Inmobiliarios. Asesoría profesional y confiable en Guatemala.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <!-- SEO básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,56 @@
+/* src/styles/global.css */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+:root {
+  /* Colores de marca — Servicios AZ Inmobiliarios */
+  --color-blue-dark: #00316B;
+  --color-blue-medium: #2462A7;
+  --color-gray-dark: #393E44;
+  --color-charcoal: #20262B;
+  --color-white: #FFFFFF;
+
+  /* Colores funcionales */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F5F6F7;
+  --color-text: #1A1D21;
+  --color-text-muted: #5A6169;
+  --color-border: #E5E7EA;
+
+  /* Tipografía */
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espaciados */
+  --max-width: 1200px;
+  --space-section: 6rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
