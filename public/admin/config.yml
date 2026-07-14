@@ -50,7 +50,6 @@ collections:
         widget: "list"
         required: false
       - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
       - label: "Galería de fotos"
         name: "galeria"
         widget: "image"
@@ -95,7 +94,6 @@ collections:
         name: "amenidades"
         widget: "list"
         required: false
-      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
       - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
       - label: "Galería de fotos"
         name: "galeria"
