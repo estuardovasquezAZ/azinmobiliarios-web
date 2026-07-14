@@ -29,8 +29,10 @@ amenidades:
   - Areas Pet Friendly
 imagenPortada: /images/hero-bg.jpg
 galeria:
-  - /images/hero-bg.jpg
+  - /images/uploads/frente.jpg
   - /images/uploads/photo_2026-06-01_10-29-46.jpg
+  - /images/uploads/photo_2026-06-01_10-29-44 (3).jpg
+  - /images/uploads/photo_2026-06-01_10-29-42.jpg
 destacada: true
 fechaPublicacion: 2026-07-14
 ---
