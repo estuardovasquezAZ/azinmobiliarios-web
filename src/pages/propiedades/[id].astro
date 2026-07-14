@@ -260,3 +260,16 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     }
   }
 </style>
+<script>
+  const mainImage = document.getElementById("main-image") as HTMLImageElement | null;
+  const thumbnails = document.querySelectorAll<HTMLImageElement>(".property__thumbnail");
+
+  thumbnails.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      if (!mainImage) return;
+      mainImage.src = thumb.dataset.full || thumb.src;
+      thumbnails.forEach((t) => t.classList.remove("is-active"));
+      thumb.classList.add("is-active");
+    });
+  });
+</script>
