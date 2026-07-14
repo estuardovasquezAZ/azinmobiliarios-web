@@ -1,0 +1,121 @@
+---
+// src/components/Hero.astro
+const whatsappNumber = "50256120160";
+const whatsappMessage = "Hola, me gustaría recibir más información sobre sus propiedades.";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<section class="hero">
+  <picture class="hero__bg">
+    <source srcset="/images/hero-bg.webp" type="image/webp" />
+    <img src="/images/hero-bg.jpg" alt="Propiedad moderna en renta - Servicios AZ Inmobiliarios" loading="eager" />
+  </picture>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">Asesoría inmobiliaria profesional y confiable</h1>
+    <p class="hero__subtitle">
+      Encuentra tu próxima propiedad en venta o renta en Guatemala, con el respaldo de Servicios AZ Inmobiliarios.
+    </p>
+    <div class="hero__actions">
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="hero__cta hero__cta--primary">
+        Contactar por WhatsApp
+      </a>
+      <a href="/propiedades" class="hero__cta hero__cta--secondary">
+        Ver propiedades
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 12, 26, 0.55) 0%,
+      rgba(0, 12, 26, 0.65) 60%,
+      rgba(0, 12, 26, 0.8) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    color: var(--color-white);
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero__cta {
+    padding: 0.9rem 1.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .hero__cta--primary {
+    background-color: #25d366;
+    color: var(--color-white);
+  }
+
+  .hero__cta--primary:hover {
+    background-color: #1fb855;
+  }
+
+  .hero__cta--secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .hero__cta--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
+  }
+</style>

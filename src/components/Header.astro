@@ -8,7 +8,7 @@
       <img src="/images/logo-full.svg" alt="Servicios AZ Inmobiliarios" width="180" />
     </a>
 
-    <nav class="header__nav">
+    <nav class="header__nav" id="header-nav">
       <a href="/propiedades/venta">Venta</a>
       <a href="/propiedades/renta">Renta</a>
       <a href="/proyectos">Proyectos</a>
@@ -16,6 +16,18 @@
       <a href="/nosotros">Nosotros</a>
       <a href="/contacto" class="header__cta">Contacto</a>
     </nav>
+
+    <button
+      class="header__toggle"
+      id="header-toggle"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="header-nav"
+    >
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
   </div>
 </header>
 
@@ -70,9 +82,101 @@
     background-color: var(--color-blue-medium) !important;
   }
 
+  /* Botón hamburguesa: oculto en desktop */
+  .header__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .header__toggle-bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-gray-dark);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Estado abierto: transforma el ícono en una X */
+  .header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   @media (max-width: 768px) {
+    .header__toggle {
+      display: flex;
+    }
+
     .header__nav {
-      display: none;
+      position: fixed;
+      top: 73px; /* alto aproximado del header */
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-white);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 1rem 1.5rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .header__nav.is-open {
+      transform: translateX(0);
+    }
+
+    .header__nav a {
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 1.05rem;
+    }
+
+    .header__cta {
+      margin-top: 1rem;
+      text-align: center;
     }
   }
 </style>
+
+<script>
+  const toggle = document.getElementById("header-toggle");
+  const nav = document.getElementById("header-nav");
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+      );
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+
+    // Cierra el menú al hacer click en un enlace
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+</script>
