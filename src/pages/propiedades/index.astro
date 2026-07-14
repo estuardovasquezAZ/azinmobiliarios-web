@@ -1,0 +1,53 @@
+---
+// src/pages/propiedades/index.astro
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PropertyCard from "../../components/PropertyCard.astro";
+
+const propiedades = await getCollection("propiedades");
+const ordenadas = propiedades.sort(
+  (a, b) => b.data.fechaPublicacion.valueOf() - a.data.fechaPublicacion.valueOf()
+);
+---
+
+<Layout title="Propiedades | Servicios AZ Inmobiliarios" description="Explora nuestras propiedades disponibles en venta y renta en Guatemala.">
+  <main class="section">
+    <div class="section__container">
+      <h1>Propiedades disponibles</h1>
+      <p class="section__subtitle">{ordenadas.length} propiedades encontradas</p>
+
+      <div class="grid">
+        {ordenadas.map((propiedad) => <PropertyCard propiedad={propiedad} />)}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .section {
+    padding: 3rem 0 5rem;
+  }
+
+  .section__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .section__subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

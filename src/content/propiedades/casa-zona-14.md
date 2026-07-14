@@ -9,6 +9,7 @@ ubicacion:
   zona: "Zona 14"
   municipio: "Guatemala"
   departamento: "Guatemala"
+descripcion: "Casa moderna de dos niveles en Zona 14, con acabados de primera calidad y amplios espacios."
 habitaciones: 3
 banos: 2.5
 parqueos: 2
