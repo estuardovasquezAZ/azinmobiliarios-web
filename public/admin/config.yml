@@ -1,0 +1,113 @@
+backend:
+  name: github
+  repo: estuardovasquezAZ/azinmobiliarios-web
+  branch: main
+  base_url: https://az-cms-auth.estuardovasquezaz.workers.dev
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "propiedades"
+    label: "Propiedades"
+    folder: "src/content/propiedades"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - label: "Tipo"
+        name: "tipo"
+        widget: "select"
+        options: ["venta", "renta"]
+      - label: "Tipo de inmueble"
+        name: "tipoInmueble"
+        widget: "select"
+        options: ["casa", "apartamento", "terreno", "local", "bodega", "oficina"]
+      - label: "Precio"
+        name: "precio"
+        widget: "object"
+        fields:
+          - { label: "Quetzales", name: "quetzales", widget: "number" }
+          - { label: "Dólares", name: "dolares", widget: "number" }
+      - label: "Ubicación"
+        name: "ubicacion"
+        widget: "object"
+        fields:
+          - { label: "Zona", name: "zona", widget: "string", required: false }
+          - { label: "Municipio", name: "municipio", widget: "string" }
+          - { label: "Departamento", name: "departamento", widget: "string", default: "Guatemala" }
+          - { label: "Dirección (opcional)", name: "direccion", widget: "string", required: false }
+      - { label: "Descripción corta", name: "descripcion", widget: "text" }
+      - { label: "Habitaciones", name: "habitaciones", widget: "number", required: false }
+      - { label: "Baños", name: "banos", widget: "number", required: false }
+      - { label: "Parqueos", name: "parqueos", widget: "number", required: false }
+      - { label: "Área de construcción (m²)", name: "areaConstruccion", widget: "number", required: false }
+      - { label: "Área de terreno (m²)", name: "areaTerreno", widget: "number", required: false }
+      - label: "Amenidades"
+        name: "amenidades"
+        widget: "list"
+        required: false
+      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
+      - { label: "Galería de fotos", name: "galeria", widget: "list", field: { label: "Foto", name: "foto", widget: "image" } }
+      - { label: "Ficha PDF (opcional)", name: "pdfFicha", widget: "file", required: false }
+      - { label: "Destacada", name: "destacada", widget: "boolean", default: false }
+      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
+      - { label: "Descripción completa", name: "body", widget: "markdown" }
+
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "src/content/proyectos"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        options: ["preventa", "en_construccion", "entregado"]
+      - label: "Ubicación"
+        name: "ubicacion"
+        widget: "object"
+        fields:
+          - { label: "Zona", name: "zona", widget: "string", required: false }
+          - { label: "Municipio", name: "municipio", widget: "string" }
+          - { label: "Departamento", name: "departamento", widget: "string", default: "Guatemala" }
+      - { label: "Descripción corta", name: "descripcion", widget: "text" }
+      - label: "Precio desde"
+        name: "precioDesde"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Quetzales", name: "quetzales", widget: "number" }
+          - { label: "Dólares", name: "dolares", widget: "number" }
+      - { label: "Unidades disponibles", name: "unidadesDisponibles", widget: "number", required: false }
+      - { label: "Fecha de entrega estimada", name: "fechaEntregaEstimada", widget: "string", required: false }
+      - label: "Amenidades"
+        name: "amenidades"
+        widget: "list"
+        required: false
+      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
+      - { label: "Galería de fotos", name: "galeria", widget: "list", field: { label: "Foto", name: "foto", widget: "image" } }
+      - { label: "Destacado", name: "destacado", widget: "boolean", default: false }
+      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
+      - { label: "Descripción completa", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { label: "Resumen", name: "resumen", widget: "text" }
+      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
+      - { label: "Autor", name: "autor", widget: "string", default: "Estuardo Vásquez" }
+      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
+      - { label: "Etiquetas", name: "tags", widget: "list", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
