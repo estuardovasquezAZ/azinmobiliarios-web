@@ -18,8 +18,8 @@ descripcion: |-
 habitaciones: 3
 banos: 2
 parqueos: 2
-areaConstruccion: 180
-areaTerreno: 220
+areaConstruccion: 125
+areaTerreno: 112
 amenidades:
   - Cocina moderna
   - Balcón
@@ -30,9 +30,9 @@ amenidades:
 imagenPortada: /images/hero-bg.jpg
 galeria:
   - /images/uploads/frente.jpg
+  - /images/uploads/photo_2026-06-01_10-29-42.jpg
   - /images/uploads/photo_2026-06-01_10-29-46.jpg
   - /images/uploads/photo_2026-06-01_10-29-44 (3).jpg
-  - /images/uploads/photo_2026-06-01_10-29-42.jpg
 destacada: true
 fechaPublicacion: 2026-07-14
 ---
