@@ -50,7 +50,12 @@ collections:
         widget: "list"
         required: false
       - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - { label: "Galería de fotos", name: "galeria", widget: "list", field: { label: "Foto", name: "foto", widget: "image" } }
+      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
+      - label: "Galería de fotos"
+        name: "galeria"
+        widget: "image"
+        multiple: true
+        required: false
       - { label: "Ficha PDF (opcional)", name: "pdfFicha", widget: "file", required: false }
       - { label: "Destacada", name: "destacada", widget: "boolean", default: false }
       - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
@@ -91,7 +96,12 @@ collections:
         widget: "list"
         required: false
       - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - { label: "Galería de fotos", name: "galeria", widget: "list", field: { label: "Foto", name: "foto", widget: "image" } }
+      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
+      - label: "Galería de fotos"
+        name: "galeria"
+        widget: "image"
+        multiple: true
+        required: false
       - { label: "Destacado", name: "destacado", widget: "boolean", default: false }
       - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
       - { label: "Descripción completa", name: "body", widget: "markdown" }
