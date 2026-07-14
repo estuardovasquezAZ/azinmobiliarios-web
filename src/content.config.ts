@@ -1,0 +1,78 @@
+// src/content/config.ts
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+
+// Schema compartido de precio en doble moneda
+const priceSchema = z.object({
+  quetzales: z.number().positive(),
+  dolares: z.number().positive(),
+});
+
+// Schema compartido de ubicación
+const locationSchema = z.object({
+  zona: z.string().optional(),
+  municipio: z.string(),
+  departamento: z.string().default("Guatemala"),
+  direccion: z.string().optional(),
+  lat: z.number().optional(),
+  lng: z.number().optional(),
+});
+
+// Colección: Propiedades (venta y renta)
+const propiedades = defineCollection({
+  loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/propiedades" }),
+  schema: z.object({
+    titulo: z.string(),
+    tipo: z.enum(["venta", "renta"]),
+    tipoInmueble: z.enum(["casa", "apartamento", "terreno", "local", "bodega", "oficina"]),
+    precio: priceSchema,
+    ubicacion: locationSchema,
+    descripcion: z.string(),
+    habitaciones: z.number().int().nonnegative().optional(),
+    banos: z.number().nonnegative().optional(),
+    parqueos: z.number().int().nonnegative().optional(),
+    areaConstruccion: z.number().positive().optional(),
+    areaTerreno: z.number().positive().optional(),
+    amenidades: z.array(z.string()).default([]),
+    imagenPortada: z.string(),
+    galeria: z.array(z.string()).default([]),
+    pdfFicha: z.string().optional(),
+    destacada: z.boolean().default(false),
+    fechaPublicacion: z.date(),
+  }),
+});
+
+// Colección: Proyectos (preventa / construcción)
+const proyectos = defineCollection({
+  loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/proyectos" }),
+  schema: z.object({
+    titulo: z.string(),
+    estado: z.enum(["preventa", "en_construccion", "entregado"]),
+    ubicacion: locationSchema,
+    descripcion: z.string(),
+    precioDesde: priceSchema.optional(),
+    unidadesDisponibles: z.number().int().nonnegative().optional(),
+    fechaEntregaEstimada: z.string().optional(),
+    amenidades: z.array(z.string()).default([]),
+    imagenPortada: z.string(),
+    galeria: z.array(z.string()).default([]),
+    pdfFicha: z.string().optional(),
+    destacado: z.boolean().default(false),
+    fechaPublicacion: z.date(),
+  }),
+});
+
+// Colección: Blog
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    titulo: z.string(),
+    resumen: z.string(),
+    imagenPortada: z.string(),
+    autor: z.string().default("Estuardo Vásquez"),
+    fechaPublicacion: z.date(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { propiedades, proyectos, blog };

@@ -1,0 +1,121 @@
+---
+// src/components/PropertyCard.astro
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  propiedad: CollectionEntry<"propiedades">;
+}
+
+const { propiedad } = Astro.props;
+const { titulo, tipo, tipoInmueble, precio, ubicacion, habitaciones, banos, parqueos, imagenPortada } =
+  propiedad.data;
+
+const formatoQ = new Intl.NumberFormat("es-GT", { style: "currency", currency: "GTQ", maximumFractionDigits: 0 });
+const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+---
+
+<a href={`/propiedades/${propiedad.id}`} class="card">
+  <div class="card__image-wrap">
+    <img src={imagenPortada} alt={titulo} loading="lazy" />
+    <span class="card__badge">{tipo === "venta" ? "En Venta" : "En Renta"}</span>
+  </div>
+
+  <div class="card__body">
+    <p class="card__location">{ubicacion.zona ? `${ubicacion.zona}, ` : ""}{ubicacion.municipio}</p>
+    <h3 class="card__title">{titulo}</h3>
+
+    <div class="card__price">
+      <span class="card__price-main">{formatoQ.format(precio.quetzales)}</span>
+      <span class="card__price-alt">{formatoUSD.format(precio.dolares)}</span>
+    </div>
+
+    <div class="card__features">
+      {habitaciones !== undefined && <span>{habitaciones} hab.</span>}
+      {banos !== undefined && <span>{banos} baños</span>}
+      {parqueos !== undefined && <span>{parqueos} parqueos</span>}
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .card__image-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card__badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background-color: var(--color-blue-dark);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+  }
+
+  .card__body {
+    padding: 1.25rem;
+  }
+
+  .card__location {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card__price-main {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+  }
+
+  .card__price-alt {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .card__features {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    padding-top: 0.75rem;
+  }
+</style>
