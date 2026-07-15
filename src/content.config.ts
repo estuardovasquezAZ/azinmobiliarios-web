@@ -2,8 +2,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-// Helpers: convierten "null" en "vacío" antes de validar,
-// para que campos opcionales dejados en blanco por el CMS nunca rompan el build
 const nullableString = () =>
   z.preprocess((val) => (val === null ? undefined : val), z.string().optional());
 
