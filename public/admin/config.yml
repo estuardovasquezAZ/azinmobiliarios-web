@@ -1,121 +1,73 @@
-backend:
-  name: github
-  repo: estuardovasquezAZ/azinmobiliarios-web
-  branch: main
-  base_url: https://az-cms-auth.estuardovasquezaz.workers.dev
+// src/content.config.ts
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+const priceSchema = z.object({
+  quetzales: z.number().positive(),
+  dolares: z.number().positive(),
+});
 
-collections:
-  - name: "propiedades"
-    label: "Propiedades"
-    folder: "src/content/propiedades"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Título", name: "titulo", widget: "string" }
-      - label: "Tipo"
-        name: "tipo"
-        widget: "select"
-        options: ["venta", "renta"]
-      - label: "Tipo de inmueble"
-        name: "tipoInmueble"
-        widget: "select"
-        options: ["casa", "apartamento", "terreno", "local", "bodega", "oficina"]
-      - label: "Precio"
-        name: "precio"
-        widget: "object"
-        fields:
-          - { label: "Quetzales", name: "quetzales", widget: "number" }
-          - { label: "Dólares", name: "dolares", widget: "number" }
-      - label: "Ubicación"
-        name: "ubicacion"
-        widget: "object"
-        fields:
-          - { label: "Zona", name: "zona", widget: "string", required: false }
-          - { label: "Municipio", name: "municipio", widget: "string" }
-          - { label: "Departamento", name: "departamento", widget: "string", default: "Guatemala" }
-          - { label: "Dirección (opcional)", name: "direccion", widget: "string", required: false }
-      - { label: "Descripción corta", name: "descripcion", widget: "text" }
-      - { label: "Habitaciones", name: "habitaciones", widget: "number", required: false }
-      - { label: "Baños", name: "banos", widget: "number", required: false }
-      - { label: "Parqueos", name: "parqueos", widget: "number", required: false }
-      - { label: "Área de construcción (m²)", name: "areaConstruccion", widget: "number", required: false }
-      - { label: "Área de terreno (m²)", name: "areaTerreno", widget: "number", required: false }
-      - label: "Amenidades"
-        name: "amenidades"
-        widget: "list"
-        required: false
-      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - label: "Galería de fotos"
-        name: "galeria"
-        widget: "image"
-        multiple: true
-        required: false
-      - { label: "Ficha PDF (opcional)", name: "pdfFicha", widget: "file", required: false }
-      - { label: "Destacada", name: "destacada", widget: "boolean", default: false }
-      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
-      - { label: "Descripción completa", name: "body", widget: "markdown" }
+const locationSchema = z.object({
+  zona: z.string().optional().nullable(),
+  municipio: z.string(),
+  departamento: z.string().default("Guatemala"),
+  direccion: z.string().optional().nullable(),
+  lat: z.number().optional().nullable(),
+  lng: z.number().optional().nullable(),
+});
 
-  - name: "proyectos"
-    label: "Proyectos"
-    folder: "src/content/proyectos"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Título", name: "titulo", widget: "string" }
-      - label: "Estado"
-        name: "estado"
-        widget: "select"
-        options: ["preventa", "en_construccion", "entregado"]
-      - label: "Ubicación"
-        name: "ubicacion"
-        widget: "object"
-        fields:
-          - { label: "Zona", name: "zona", widget: "string", required: false }
-          - { label: "Municipio", name: "municipio", widget: "string" }
-          - { label: "Departamento", name: "departamento", widget: "string", default: "Guatemala" }
-      - { label: "Descripción corta", name: "descripcion", widget: "text" }
-      - label: "Precio desde"
-        name: "precioDesde"
-        widget: "object"
-        required: false
-        fields:
-          - { label: "Quetzales", name: "quetzales", widget: "number" }
-          - { label: "Dólares", name: "dolares", widget: "number" }
-      - { label: "Unidades disponibles", name: "unidadesDisponibles", widget: "number", required: false }
-      - { label: "Fecha de entrega estimada", name: "fechaEntregaEstimada", widget: "string", required: false }
-      - label: "Amenidades"
-        name: "amenidades"
-        widget: "list"
-        required: false
-      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - label: "Galería de fotos"
-        name: "galeria"
-        widget: "image"
-        multiple: true
-        required: false
-      - { label: "Destacado", name: "destacado", widget: "boolean", default: false }
-      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
-      - { label: "Descripción completa", name: "body", widget: "markdown" }
+const propiedades = defineCollection({
+  loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/propiedades" }),
+  schema: z.object({
+    titulo: z.string(),
+    tipo: z.enum(["venta", "renta"]),
+    tipoInmueble: z.enum(["casa", "apartamento", "terreno", "local", "bodega", "oficina"]),
+    precio: priceSchema,
+    ubicacion: locationSchema,
+    descripcion: z.string(),
+    habitaciones: z.number().int().nonnegative().optional().nullable(),
+    banos: z.number().nonnegative().optional().nullable(),
+    parqueos: z.number().int().nonnegative().optional().nullable(),
+    areaConstruccion: z.number().positive().optional().nullable(),
+    areaTerreno: z.number().positive().optional().nullable(),
+    amenidades: z.array(z.string()).default([]),
+    imagenPortada: z.string(),
+    galeria: z.array(z.string()).default([]),
+    pdfFicha: z.string().optional().nullable(),
+    destacada: z.boolean().default(false),
+    fechaPublicacion: z.coerce.date(),
+  }),
+});
 
-  - name: "blog"
-    label: "Blog"
-    folder: "src/content/blog"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Título", name: "titulo", widget: "string" }
-      - { label: "Resumen", name: "resumen", widget: "text" }
-      - { label: "Imagen de portada", name: "imagenPortada", widget: "image" }
-      - { label: "Autor", name: "autor", widget: "string", default: "Estuardo Vásquez" }
-      - { label: "Fecha de publicación", name: "fechaPublicacion", widget: "datetime" }
-      - { label: "Etiquetas", name: "tags", widget: "list", required: false }
-      - { label: "Contenido", name: "body", widget: "markdown" }
+const proyectos = defineCollection({
+  loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/proyectos" }),
+  schema: z.object({
+    titulo: z.string(),
+    estado: z.enum(["preventa", "en_construccion", "entregado"]),
+    ubicacion: locationSchema,
+    descripcion: z.string(),
+    precioDesde: priceSchema.optional().nullable(),
+    unidadesDisponibles: z.number().int().nonnegative().optional().nullable(),
+    fechaEntregaEstimada: z.string().optional().nullable(),
+    amenidades: z.array(z.string()).default([]),
+    imagenPortada: z.string(),
+    galeria: z.array(z.string()).default([]),
+    pdfFicha: z.string().optional().nullable(),
+    destacado: z.boolean().default(false),
+    fechaPublicacion: z.coerce.date(),
+  }),
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    titulo: z.string(),
+    resumen: z.string(),
+    imagenPortada: z.string(),
+    autor: z.string().default("Estuardo Vásquez"),
+    fechaPublicacion: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { propiedades, proyectos, blog };

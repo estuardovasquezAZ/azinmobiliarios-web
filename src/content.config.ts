@@ -38,7 +38,7 @@ const propiedades = defineCollection({
     galeria: z.array(z.string()).default([]),
     pdfFicha: z.string().optional(),
     destacada: z.boolean().default(false),
-    fechaPublicacion: z.date(),
+    fechaPublicacion: z.coerce.date(),
   }),
 });
 
@@ -58,7 +58,7 @@ const proyectos = defineCollection({
     galeria: z.array(z.string()).default([]),
     pdfFicha: z.string().optional(),
     destacado: z.boolean().default(false),
-    fechaPublicacion: z.date(),
+    fechaPublicacion: z.coerce.date(),
   }),
 });
 
@@ -70,7 +70,7 @@ const blog = defineCollection({
     resumen: z.string(),
     imagenPortada: z.string(),
     autor: z.string().default("Estuardo Vásquez"),
-    fechaPublicacion: z.date(),
+    fechaPublicacion: z.coerce.date(),
     tags: z.array(z.string()).default([]),
   }),
 });
