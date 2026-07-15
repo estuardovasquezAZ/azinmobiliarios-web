@@ -2,6 +2,7 @@
 // src/pages/propiedades/[id].astro
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import PropertyGallery from "../../components/PropertyGallery.astro";
 
 export async function getStaticPaths() {
   const propiedades = await getCollection("propiedades");
@@ -45,15 +46,11 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         <a href="/propiedades">Propiedades</a> / <span>{titulo}</span>
       </nav>
 
-      <div class="property__gallery">
-        <img src={imagenPortada} alt={titulo} class="property__main-image" />
-        {galeria.length > 1 && (
-          <div class="property__thumbnails">
-            {galeria.map((img) => <img src={img} alt={titulo} />)}
-          </div>
-        )}
-      </div>
-
+      <PropertyGallery
+        images={galeria.length > 0 ? [imagenPortada, ...galeria.filter((g) => g !== imagenPortada)] : [imagenPortada]}
+        alt={titulo}
+          />
+          
       <div class="property__grid">
         <div class="property__main">
           <span class="property__badge">{tipo === "venta" ? "En Venta" : "En Renta"}</span>
@@ -259,17 +256,20 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       position: static;
     }
   }
-</style>
-<script>
-  const mainImage = document.getElementById("main-image") as HTMLImageElement | null;
-  const thumbnails = document.querySelectorAll<HTMLImageElement>(".property__thumbnail");
+  .property__description :global(p) {
+    margin-bottom: 1.1rem;
+  }
 
-  thumbnails.forEach((thumb) => {
-    thumb.addEventListener("click", () => {
-      if (!mainImage) return;
-      mainImage.src = thumb.dataset.full || thumb.src;
-      thumbnails.forEach((t) => t.classList.remove("is-active"));
-      thumb.classList.add("is-active");
-    });
-  });
-</script>
+  .property__description :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .property__description :global(ul),
+  .property__description :global(ol) {
+    margin: 0 0 1.1rem 1.25rem;
+  }
+
+  .property__description :global(strong) {
+    font-weight: 600;
+  }
+</style>
