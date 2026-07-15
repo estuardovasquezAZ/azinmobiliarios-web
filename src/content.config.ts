@@ -1,24 +1,29 @@
-// src/content/config.ts
+// src/content.config.ts
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-// Schema compartido de precio en doble moneda
+// Helpers: convierten "null" en "vacío" antes de validar,
+// para que campos opcionales dejados en blanco por el CMS nunca rompan el build
+const nullableString = () =>
+  z.preprocess((val) => (val === null ? undefined : val), z.string().optional());
+
+const nullableNumber = () =>
+  z.preprocess((val) => (val === null ? undefined : val), z.number().positive().optional());
+
 const priceSchema = z.object({
   quetzales: z.number().positive(),
   dolares: z.number().positive(),
 });
 
-// Schema compartido de ubicación
 const locationSchema = z.object({
-  zona: z.string().optional(),
+  zona: nullableString(),
   municipio: z.string(),
   departamento: z.string().default("Guatemala"),
-  direccion: z.string().optional(),
-  lat: z.number().optional(),
-  lng: z.number().optional(),
+  direccion: nullableString(),
+  lat: nullableNumber(),
+  lng: nullableNumber(),
 });
 
-// Colección: Propiedades (venta y renta)
 const propiedades = defineCollection({
   loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/propiedades" }),
   schema: z.object({
@@ -28,21 +33,20 @@ const propiedades = defineCollection({
     precio: priceSchema,
     ubicacion: locationSchema,
     descripcion: z.string(),
-    habitaciones: z.number().int().nonnegative().optional(),
-    banos: z.number().nonnegative().optional(),
-    parqueos: z.number().int().nonnegative().optional(),
-    areaConstruccion: z.number().positive().optional(),
-    areaTerreno: z.number().positive().optional(),
+    habitaciones: nullableNumber(),
+    banos: nullableNumber(),
+    parqueos: nullableNumber(),
+    areaConstruccion: nullableNumber(),
+    areaTerreno: nullableNumber(),
     amenidades: z.array(z.string()).default([]),
     imagenPortada: z.string(),
     galeria: z.array(z.string()).default([]),
-    pdfFicha: z.string().optional(),
+    pdfFicha: nullableString(),
     destacada: z.boolean().default(false),
     fechaPublicacion: z.coerce.date(),
   }),
 });
 
-// Colección: Proyectos (preventa / construcción)
 const proyectos = defineCollection({
   loader: glob({ pattern: "**/*.{md,yaml,yml}", base: "./src/content/proyectos" }),
   schema: z.object({
@@ -50,19 +54,18 @@ const proyectos = defineCollection({
     estado: z.enum(["preventa", "en_construccion", "entregado"]),
     ubicacion: locationSchema,
     descripcion: z.string(),
-    precioDesde: priceSchema.optional(),
-    unidadesDisponibles: z.number().int().nonnegative().optional(),
-    fechaEntregaEstimada: z.string().optional(),
+    precioDesde: priceSchema.optional().nullable(),
+    unidadesDisponibles: nullableNumber(),
+    fechaEntregaEstimada: nullableString(),
     amenidades: z.array(z.string()).default([]),
     imagenPortada: z.string(),
     galeria: z.array(z.string()).default([]),
-    pdfFicha: z.string().optional(),
+    pdfFicha: nullableString(),
     destacado: z.boolean().default(false),
     fechaPublicacion: z.coerce.date(),
   }),
 });
 
-// Colección: Blog
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
