@@ -16,7 +16,7 @@ descripcion: |-
   Casa para remodelar en zona 1 de Villa Nueva
 habitaciones: 4
 banos: 1
-parqueos: 1
+parqueos: null
 areaConstruccion: 105
 areaTerreno: 205
 amenidades:
