@@ -46,11 +46,11 @@ Propiedad ubicada a solo 5 cuadras del parque central de Villa Nueva, sobre 6ª 
 
 La propiedad puede adquirirse completa o la mitad.
 
-Área total
+### Área total
 
 - 10 × 20.5 metros (205 m²)
 
-Media propiedad
+### Media propiedad
 
 - 5 × 20.5 metros (102.5 m²)
 
@@ -58,17 +58,15 @@ Media propiedad
 
 ## 💰 Precio
 
-- Media propiedad: Q360,000
+- Media propiedad: Q360,000 (Poco negociables)
 
-- Propiedad completa: Q675,000
-
-\*Precios poco negociables.\*
+- Propiedad completa: Q675,000 (Poco negociables)
 
 ---
 
 ## 🏠 Características
 
-La propiedad se comercializa principalmente como terreno, aunque actualmente cuenta con:
+La propiedad se comercializa principalmente como terreno, aunque actualmente cuenta con construcciones funcionales:
 
 - Muro perimetral
 
@@ -94,6 +92,74 @@ La propiedad se comercializa principalmente como terreno, aunque actualmente cue
 
 - Pozo ciego
 
-✅ Pared propia
+### ✅ Extras
 
-✅ Pared reforzada para segundo nivel
+- Pared propia.
+
+- Pared reforzada para construir un segundo nivel.
+
+---
+
+## ⚠️ Condiciones importantes
+
+### Compra de media propiedad
+
+- Será necesario compartir el costo de construcción de la pared medianera.
+
+- Se puede proporcionar agua y energía eléctrica de forma temporal.
+
+- Posteriormente será necesario gestionar los servicios propios de agua potable y energía eléctrica.
+
+### Documentación
+
+- Papelería completamente en orden.
+
+- IUSI al día (pago simbólico).
+
+---
+
+## 💧 Requisitos para solicitar servicio de agua
+
+Según los requisitos municipales, el comprador deberá presentar:
+
+- Copia del DPI.
+
+- Boleto de ornato vigente.
+
+- Documento que acredite la propiedad o posesión, con certificación del Registro General de la Propiedad.
+
+- Fotocopia legalizada del documento de personería (si aplica).
+
+- Croquis de ubicación con calles, avenidas y puntos de referencia.
+
+- Último recibo de extracción de basura.
+
+- Documentación presentada en folder tamaño oficio.
+
+### Costos aproximados
+
+- Derecho de conexión: Q3,500
+
+- Inspección de campo: Q100
+
+- Conexión: Q50
+
+---
+
+## 🎯 Ideal para
+
+- Inversión.
+
+- Construcción de vivienda.
+
+- Desarrollo progresivo.
+
+- Proyecto familiar.
+
+- Compra de media propiedad con posibilidad de ampliación.
+
+---
+
+## 📲 Más información
+
+WhatsApp: 5612-0160
