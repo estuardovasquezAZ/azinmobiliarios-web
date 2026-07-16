@@ -1,5 +1,5 @@
 ---
-titulo: Casa en venta en zona 1 de VillaNueva
+titulo: Casa en venta en zona 1 de Villa Nueva
 tipo: venta
 tipoInmueble: casa
 precio:
