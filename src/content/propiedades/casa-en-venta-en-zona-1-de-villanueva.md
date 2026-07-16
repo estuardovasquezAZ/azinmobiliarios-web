@@ -19,7 +19,8 @@ banos: 1
 parqueos: 0
 areaConstruccion: 105
 areaTerreno: 205
-amenidades: []
+amenidades:
+  - n/a
 imagenPortada: /images/uploads/WhatsApp Image 2026-07-15 at 9.15.32 PM_2.jpeg
 galeria:
   - /images/uploads/WhatsApp Image 2026-07-15 at 9.15.32 PM.jpeg
@@ -29,7 +30,7 @@ galeria:
   - /images/uploads/WhatsApp Image 2026-07-15 at 9.15.33 PM_7.jpeg
   - /images/uploads/WhatsApp Image 2026-07-15 at 9.15.33 PM_8.jpeg
 pdfFicha: ''
-destacada: false
+destacada: true
 fechaPublicacion: 2026-07-15T21:19
 ---
 
