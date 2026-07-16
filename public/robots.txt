@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://azinmobiliarios-web.pages.dev/sitemap-index.xml

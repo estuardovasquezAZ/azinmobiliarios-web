@@ -37,6 +37,7 @@ const formatoQ = new Intl.NumberFormat("es-GT", { style: "currency", currency: "
 const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
 const whatsappNumber = "50256120160";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const whatsappMessage = `Hola, me interesa la propiedad "${titulo}". ¿Podrían darme más información?`;
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
@@ -92,8 +93,8 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               Contactar por WhatsApp
             </a>
           </div>
-          <ContactForm propertyTitle={titulo} propertyUrl={Astro.url.href} />
-  <ShareButtons title={titulo} url={Astro.url.href} />
+          <ContactForm propertyTitle={titulo} propertyUrl={canonicalUrl} />
+<ShareButtons title={titulo} url={canonicalUrl} />
         </aside>
       </div>
     </div>
