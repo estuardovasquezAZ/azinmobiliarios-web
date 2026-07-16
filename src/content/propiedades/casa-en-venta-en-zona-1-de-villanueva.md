@@ -34,100 +34,132 @@ destacada: true
 fechaPublicacion: 2026-07-15T21:19
 ---
 
-**Casa En Villa Nueva – Excelente Ubicación**
+# 🏡 Casa en Venta – Villa Nueva
 
-Propiedad ubicada a solo 5 cuadras del parque de Villa Nueva, sobre 6ta calle, en una zona accesible y con alto potencial.
+### Excelente ubicación
 
-🔹 Se vende completa o la mitad
+Propiedad ubicada a solo \*\*5 cuadras del parque central de Villa Nueva\*\*, sobre \*\*6ª calle\*\*, en una zona accesible, céntrica y con alto potencial de inversión.
 
- • Área total: 10 x 20.5 metros
+---
 
- • Opción mitad: 5 x 20.5 metros
+## 📐 Opciones de compra
 
-**💰 Precios**:
+La propiedad puede adquirirse \*\*completa\*\* o \*\*la mitad\*\*.
 
- • Mitad: Q360,000 poco negociables
+\*\*Área total\*\*
 
- • Completa: Q675,000 poco negociables 
+- 10 x 20.5 metros (205 m²)
 
-**🧱 Características de la propiedad**
+\*\*Media propiedad\*\*
 
-La propiedad se comercializa principalmente como terreno, pero actualmente cuenta con construcciones aprovechables:
+- 5 x 20.5 metros (102.5 m²)
 
- • Muro perimetral
+---
 
- • Jardín frontal
+## 💰 Precio
 
- • Sala y comedor
+- \*\*Media propiedad:\*\* Q360,000 \*(poco negociables)\*
 
- • Cocina
+- \*\*Propiedad completa:\*\* Q675,000 \*(poco negociables)\*
 
- • 1 habitación
+---
 
- • Baño completo
+## 🏠 Características
 
- • Bodega
+Aunque la propiedad se comercializa principalmente como \*\*terreno\*\*, actualmente cuenta con construcciones funcionales:
 
- • Taller
+- Muro perimetral
 
- • Área de pila
+- Jardín frontal
 
- • Patio trasero
+- Sala
 
- • Pozo ciego
+- Comedor
 
-✔️ Pared propia
+- Cocina
 
-✔️ Pared reforzada para segundo nivel
+- 1 habitación
 
-**⚠️ Condiciones importantes**
+- 1 baño completo
 
- • Si se compra la mitad:
+- Bodega
 
- • Se deberá compartir la construcción de pared medianera
+- Taller
 
- • Se puede brindar agua y luz de forma temporal
+- Área de pila
 
- • Será necesario gestionar servicio propio de agua y energía eléctrica 
+- Patio trasero
 
- • Propiedad con documentación en orden
+- Pozo ciego
 
- • IUSI al día (paga monto simbólico)
+### Extras
 
-**💧 Requisitos básicos para solicitar servicio de agua**
+- ✅ Pared propia
 
-Según el formulario municipal, el comprador deberá presentar:
+- ✅ Pared reforzada para construir un segundo nivel
 
- • Copia de DPI
+---
 
- • Boleto de ornato vigente
+## ⚠️ Condiciones importantes
 
- • Documento que acredite propiedad o posesión (con certificación del Registro de la Propiedad)
+### Si se adquiere únicamente la mitad:
 
- • Fotocopia legalizada del documento de personería (si aplica)
+- Será necesario compartir el costo de construcción de la pared medianera.
 
- • Croquis de ubicación (calles, avenidas y referencias)
+- Se puede proporcionar agua y energía eléctrica de forma temporal.
 
- • Último recibo de extracción de basura
+- El comprador deberá gestionar posteriormente sus propios servicios de agua y electricidad.
 
- • Entregar documentación en folder tamaño oficio
+### Documentación
 
-**💵 Costos aproximados para solicitar servicio de agua potable:**
+- ✅ Papelería completamente en orden.
 
- • Derecho de conexión: Q3,500
+- ✅ IUSI al día (pago simbólico).
 
- • Inspección de campo: Q100
+---
 
- • Conexión: Q50
+## 💧 Requisitos para solicitar servicio de agua
 
-**🧭 Resumen estratégico**
+Según los requisitos municipales, se deberá presentar:
 
-**Ideal para:**
+- Copia del DPI.
 
- • Inversión
+- Boleto de ornato vigente.
 
- • Construcción desde cero
+- Documento que acredite la propiedad o posesión (con certificación del Registro General de la Propiedad).
 
- • Desarrollo progresivo (especialmente comprando la mitad)
+- Fotocopia legalizada del documento de personería (si aplica).
 
-Más información a WhatsApp 5612-0160
+- Croquis de ubicación con calles, avenidas y referencias.
+
+- Último recibo de extracción de basura.
+
+- Documentación presentada en folder tamaño oficio.
+
+### Costos aproximados
+
+- Derecho de conexión: \*\*Q3,500\*\*
+
+- Inspección de campo: \*\*Q100\*\*
+
+- Conexión: \*\*Q50\*\*
+
+---
+
+## 🎯 Ideal para
+
+- Inversión
+
+- Construcción de vivienda
+
+- Desarrollo progresivo
+
+- Proyecto familiar
+
+- Compra de media propiedad con posibilidad de crecimiento
+
+---
+
+## 📲 Más información
+
+\*\*WhatsApp:\*\* \*\*5612-0160\*\*
