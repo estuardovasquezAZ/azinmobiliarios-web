@@ -29,10 +29,13 @@ amenidades:
   - Areas Pet Friendly
 imagenPortada: /images/uploads/frente.jpg
 galeria:
-  - /images/uploads/frente.jpg
+  - /images/uploads/photo_2026-06-01_10-29-43.jpg
   - /images/uploads/photo_2026-06-01_10-29-42.jpg
   - /images/uploads/photo_2026-06-01_10-29-46.jpg
   - /images/uploads/photo_2026-06-01_10-29-44 (3).jpg
+  - /images/uploads/photo_2026-06-01_10-29-45 (2).jpg
+  - /images/uploads/photo_2026-06-01_10-29-45.jpg
+  - /images/uploads/photo_2026-06-01_10-29-44 (2).jpg
 destacada: true
 fechaPublicacion: 2026-07-14
 ---
@@ -45,59 +48,45 @@ Vive en un entorno residencial tranquilo, seguro y con excelente acceso en Villa
 
 📍 Km 25.5 al 26, desvío a Santa Elena Barillas.
 
----
+***
 
 ### Características
 
 - Casa de dos niveles
-
 - 3 habitaciones
-
 - Dormitorio principal con baño privado y walking closet
-
 - 2 habitaciones secundarias con baño compartido
-
 - Sala y comedor
-
 - Cocina con gabinetes
-
 - Baño de visitas
-
 - Bodega bajo las gradas
-
 - Jardín privado
-
 - Área de lavandería con pila
-
 - Calentador de agua
-
 - Parqueo para 2 vehículos
 
----
+***
 
 ### Dimensiones
 
 - Terreno: 112 m²
-
 - Construcción: 125 m²
 
----
+***
 
 ### Precio de renta
 
 Incluye mantenimiento
 
----
+***
 
 ### Ideal para
 
 - Familias
-
 - Profesionales
-
 - Personas que buscan un ambiente residencial, seguro y con fácil acceso a la ciudad
 
----
+***
 
 ### Información y visitas
 
