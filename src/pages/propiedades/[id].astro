@@ -3,6 +3,8 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PropertyGallery from "../../components/PropertyGallery.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
 
 export async function getStaticPaths() {
   const propiedades = await getCollection("propiedades");
@@ -90,6 +92,8 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               Contactar por WhatsApp
             </a>
           </div>
+          <ContactForm propertyTitle={titulo} propertyUrl={Astro.url.href} />
+  <ShareButtons title={titulo} url={Astro.url.href} />
         </aside>
       </div>
     </div>
