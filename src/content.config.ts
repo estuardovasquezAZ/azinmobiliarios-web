@@ -5,7 +5,10 @@ import { glob } from "astro/loaders";
 const nullableString = () =>
   z.preprocess((val) => (val === null ? undefined : val), z.string().optional());
 
-const nullableNumber = () =>
+const nullableNonNegativeNumber = () =>
+  z.preprocess((val) => (val === null ? undefined : val), z.number().nonnegative().optional());
+
+const nullablePositiveNumber = () =>
   z.preprocess((val) => (val === null ? undefined : val), z.number().positive().optional());
 
 const priceSchema = z.object({
@@ -18,8 +21,8 @@ const locationSchema = z.object({
   municipio: z.string(),
   departamento: z.string().default("Guatemala"),
   direccion: nullableString(),
-  lat: nullableNumber(),
-  lng: nullableNumber(),
+  lat: nullablePositiveNumber(),
+  lng: nullablePositiveNumber(),
 });
 
 const propiedades = defineCollection({
@@ -31,11 +34,11 @@ const propiedades = defineCollection({
     precio: priceSchema,
     ubicacion: locationSchema,
     descripcion: z.string(),
-    habitaciones: nullableNumber(),
-    banos: nullableNumber(),
-    parqueos: nullableNumber(),
-    areaConstruccion: nullableNumber(),
-    areaTerreno: nullableNumber(),
+    habitaciones: nullableNonNegativeNumber(),
+    banos: nullableNonNegativeNumber(),
+    parqueos: nullableNonNegativeNumber(),
+    areaConstruccion: nullablePositiveNumber(),
+    areaTerreno: nullablePositiveNumber(),
     amenidades: z.array(z.string()).default([]),
     imagenPortada: z.string(),
     galeria: z.array(z.string()).default([]),
@@ -53,7 +56,7 @@ const proyectos = defineCollection({
     ubicacion: locationSchema,
     descripcion: z.string(),
     precioDesde: priceSchema.optional().nullable(),
-    unidadesDisponibles: nullableNumber(),
+    unidadesDisponibles: nullableNonNegativeNumber(),
     fechaEntregaEstimada: nullableString(),
     amenidades: z.array(z.string()).default([]),
     imagenPortada: z.string(),
