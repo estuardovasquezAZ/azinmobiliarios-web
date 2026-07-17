@@ -1,7 +1,7 @@
 ---
 titulo: Apartamento de 1 habitacion en renta Edificio Silk 4 Zona 4
 tipo: renta
-estado: no_disponible
+estado: disponible
 tipoInmueble: apartamento
 precio:
   quetzales: 7250
