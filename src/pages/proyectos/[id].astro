@@ -1,0 +1,245 @@
+---
+// src/pages/proyectos/[id].astro
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PropertyGallery from "../../components/PropertyGallery.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
+
+export async function getStaticPaths() {
+  const proyectos = await getCollection("proyectos");
+  return proyectos.map((proyecto) => ({
+    params: { id: proyecto.id },
+    props: { proyecto },
+  }));
+}
+
+const { proyecto } = Astro.props;
+const { Content } = await render(proyecto);
+
+const {
+  titulo,
+  estado,
+  ubicacion,
+  precioDesde,
+  unidadesDisponibles,
+  fechaEntregaEstimada,
+  amenidades,
+  imagenPortada,
+  galeria,
+} = proyecto.data;
+
+const estadoLabels: Record<string, string> = {
+  preventa: "Preventa",
+  en_construccion: "En Construcción",
+  entregado: "Entregado",
+};
+
+const formatoQ = new Intl.NumberFormat("es-GT", { style: "currency", currency: "GTQ", maximumFractionDigits: 0 });
+const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<Layout title={`${titulo} | Servicios AZ Inmobiliarios`} description={proyecto.data.descripcion} image={imagenPortada}>
+  <main class="project">
+    <div class="project__container">
+      <nav class="project__breadcrumb">
+        <a href="/proyectos">Proyectos</a> / <span>{titulo}</span>
+      </nav>
+
+      <PropertyGallery
+        images={galeria.length > 0 ? [imagenPortada, ...galeria.filter((g) => g !== imagenPortada)] : [imagenPortada]}
+        alt={titulo}
+      />
+
+      <div class="project__grid">
+        <div class="project__main">
+          <span class:list={["project__badge", `project__badge--${estado}`]}>{estadoLabels[estado]}</span>
+          <h1>{titulo}</h1>
+          <p class="project__location">
+            📍 {ubicacion.zona ? `${ubicacion.zona}, ` : ""}{ubicacion.municipio}, {ubicacion.departamento}
+          </p>
+
+          <div class="project__features">
+            {unidadesDisponibles !== undefined && unidadesDisponibles !== null && (
+              <div><strong>{unidadesDisponibles}</strong><span>Unidades disponibles</span></div>
+            )}
+            {fechaEntregaEstimada && (
+              <div><strong>{fechaEntregaEstimada}</strong><span>Entrega estimada</span></div>
+            )}
+          </div>
+
+          <div class="project__description">
+            <h2>Descripción</h2>
+            <Content />
+          </div>
+
+          {amenidades.length > 0 && (
+            <div class="project__amenities">
+              <h2>Amenidades</h2>
+              <ul>
+                {amenidades.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <aside class="project__sidebar">
+          {precioDesde && (
+            <div class="project__price-box">
+              <p class="project__price-label">Desde</p>
+              <p class="project__price-main">{formatoQ.format(precioDesde.quetzales)}</p>
+              <p class="project__price-alt">{formatoUSD.format(precioDesde.dolares)}</p>
+            </div>
+          )}
+
+          <ContactForm propertyTitle={titulo} propertyUrl={canonicalUrl} />
+          <ShareButtons title={titulo} url={canonicalUrl} />
+        </aside>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .project__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .project__breadcrumb {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .project__breadcrumb a {
+    color: var(--color-blue-medium);
+  }
+
+  .project__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+    align-items: start;
+  }
+
+  .project__badge {
+    display: inline-block;
+    color: var(--color-white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .project__badge--preventa {
+    background-color: var(--color-blue-medium);
+  }
+
+  .project__badge--en_construccion {
+    background-color: #f59e0b;
+  }
+
+  .project__badge--entregado {
+    background-color: #1fb855;
+  }
+
+  .project__main h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .project__location {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .project__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+  }
+
+  .project__features div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__features strong {
+    font-size: 1.1rem;
+  }
+
+  .project__features span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .project__description,
+  .project__amenities {
+    margin-bottom: 2rem;
+  }
+
+  .project__description h2,
+  .project__amenities h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .project__description :global(p) {
+    margin-bottom: 1.1rem;
+  }
+
+  .project__description :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .project__amenities ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .project__amenities li::before {
+    content: "✓ ";
+    color: var(--color-blue-medium);
+    font-weight: 700;
+  }
+
+  .project__price-box {
+    background-color: var(--color-bg-alt);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .project__price-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .project__price-main {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+  }
+
+  .project__price-alt {
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .project__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
