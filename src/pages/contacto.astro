@@ -1,0 +1,258 @@
+---
+// src/pages/contacto.astro
+import Layout from "../layouts/Layout.astro";
+
+const whatsappNumber = "50256120160";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola, me gustaría más información.")}`;
+const WEB3FORMS_KEY = "56ba5101-63a4-481d-ac89-f4a090febdee";
+---
+
+<Layout
+  title="Contacto | Servicios AZ Inmobiliarios"
+  description="Contáctanos para asesoría inmobiliaria en Guatemala. Compra, venta o renta de propiedades con atención personalizada."
+>
+  <main class="contact-page">
+    <div class="contact-page__container">
+      <div class="contact-page__intro">
+        <h1>Hablemos de tu próxima propiedad</h1>
+        <p>
+          Ya sea que busques comprar, rentar, o vender tu propiedad, estoy para ayudarte
+          con asesoría personalizada en cada paso.
+        </p>
+
+        <div class="contact-page__info">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="contact-page__info-item">
+            <span class="contact-page__info-label">WhatsApp</span>
+            <span class="contact-page__info-value">+502 5612-0160</span>
+          </a>
+
+          <a href="mailto:estuardovasquezAZ@gmail.com" class="contact-page__info-item">
+            <span class="contact-page__info-label">Correo</span>
+            <span class="contact-page__info-value">estuardovasquezAZ@gmail.com</span>
+          </a>
+
+          <div class="contact-page__info-item">
+            <span class="contact-page__info-label">Zona de cobertura</span>
+            <span class="contact-page__info-value">Ciudad de Guatemala y municipios aledaños</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-page__form-wrap">
+        <form id="general-contact-form">
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject" value="Nuevo mensaje de contacto general" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="contact-page__field">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="contact-page__field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="contact-page__field">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+
+          <div class="contact-page__field">
+            <label for="interest">¿En qué puedo ayudarte?</label>
+            <select id="interest" name="interest" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Comprar una propiedad">Quiero comprar una propiedad</option>
+              <option value="Rentar una propiedad">Quiero rentar una propiedad</option>
+              <option value="Vender mi propiedad">Quiero vender mi propiedad</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="contact-page__field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="contact-page__submit">Enviar mensaje</button>
+          <p class="contact-page__status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .contact-page {
+    padding: 3.5rem 0 5rem;
+  }
+
+  .contact-page__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
+  }
+
+  .contact-page__intro h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    max-width: 420px;
+  }
+
+  .contact-page__intro > p {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+
+  .contact-page__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-page__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .contact-page__info-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .contact-page__info-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  a.contact-page__info-item .contact-page__info-value {
+    color: var(--color-blue-dark);
+  }
+
+  a.contact-page__info-item:hover .contact-page__info-value {
+    color: var(--color-blue-medium);
+  }
+
+  .contact-page__form-wrap {
+    background-color: var(--color-bg-alt);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .contact-page__field {
+    margin-bottom: 1.1rem;
+  }
+
+  .contact-page__field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-page__field input,
+  .contact-page__field select,
+  .contact-page__field textarea {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background-color: var(--color-white);
+  }
+
+  .contact-page__field textarea {
+    resize: vertical;
+  }
+
+  .contact-page__field input:focus,
+  .contact-page__field select:focus,
+  .contact-page__field textarea:focus {
+    outline: none;
+    border-color: var(--color-blue-medium);
+  }
+
+  .contact-page__submit {
+    width: 100%;
+    background-color: var(--color-blue-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 0.9rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .contact-page__submit:hover {
+    background-color: var(--color-blue-medium);
+  }
+
+  .contact-page__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .contact-page__status {
+    margin-top: 0.85rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .contact-page__container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("general-contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+
+  if (form && status) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+      status.textContent = "";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: formData,
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          status.textContent = "¡Gracias! Te contactaremos pronto.";
+          status.style.color = "#1fb855";
+          form.reset();
+        } else {
+          throw new Error(result.message || "Error al enviar");
+        }
+      } catch (error) {
+        status.textContent = "Hubo un error. Intenta de nuevo o escríbenos por WhatsApp.";
+        status.style.color = "#e02424";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar mensaje";
+      }
+    });
+  }
+</script>
