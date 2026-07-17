@@ -23,7 +23,7 @@ amenidades:
   - Area de juegos para niños
   - Cancha deportiva
   - Garita de Seguridad
-imagenPortada: /images/uploads/photo_1_2026-07-16_14-35-37.jpg
+imagenPortada: /images/uploads/524DCFE0-5CFD-49B4-A189-152BA4146FD7.png
 galeria:
   - /images/uploads/photo_9_2026-07-16_14-35-37.jpg
   - /images/uploads/photo_10_2026-07-16_14-35-37.jpg
