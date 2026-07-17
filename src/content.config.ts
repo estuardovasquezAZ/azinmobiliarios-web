@@ -30,6 +30,7 @@ const propiedades = defineCollection({
   schema: z.object({
     titulo: z.string(),
     tipo: z.enum(["venta", "renta"]),
+    estado: z.enum(["disponible", "reservada", "no_disponible"]).default("disponible"),
     tipoInmueble: z.enum(["casa", "apartamento", "terreno", "local", "bodega", "oficina"]),
     precio: priceSchema,
     ubicacion: locationSchema,

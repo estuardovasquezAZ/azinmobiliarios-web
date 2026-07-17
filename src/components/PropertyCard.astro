@@ -7,8 +7,11 @@ interface Props {
 }
 
 const { propiedad } = Astro.props;
-const { titulo, tipo, tipoInmueble, precio, ubicacion, habitaciones, banos, parqueos, imagenPortada } =
+const { titulo, tipo, estado, tipoInmueble, precio, ubicacion, habitaciones, banos, parqueos, imagenPortada } =
   propiedad.data;
+
+const estadoLabel =
+  estado === "reservada" ? "Reservada" : estado === "no_disponible" ? (tipo === "venta" ? "Vendida" : "Rentada") : null;
 
 const formatoQ = new Intl.NumberFormat("es-GT", { style: "currency", currency: "GTQ", maximumFractionDigits: 0 });
 const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -16,8 +19,11 @@ const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency:
 
 <a href={`/propiedades/${propiedad.id}`} class="card">
   <div class="card__image-wrap">
-    <img src={imagenPortada} alt={titulo} loading="lazy" />
+    <img src={imagenPortada} alt={titulo} loading="lazy" class:list={{ "is-unavailable": estado === "no_disponible" }} />
     <span class="card__badge">{tipo === "venta" ? "En Venta" : "En Renta"}</span>
+    {estadoLabel && (
+      <span class:list={["card__status", `card__status--${estado}`]}>{estadoLabel}</span>
+    )}
   </div>
 
   <div class="card__body">
@@ -62,6 +68,11 @@ const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency:
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: filter 0.2s ease;
+  }
+
+  .card__image-wrap img.is-unavailable {
+    filter: grayscale(0.85) brightness(0.85);
   }
 
   .card__badge {
@@ -74,6 +85,28 @@ const formatoUSD = new Intl.NumberFormat("en-US", { style: "currency", currency:
     font-weight: 600;
     padding: 0.3rem 0.7rem;
     border-radius: 4px;
+  }
+
+  .card__status {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .card__status--reservada {
+    background-color: #f59e0b;
+    color: var(--color-white);
+  }
+
+  .card__status--no_disponible {
+    background-color: #6b7280;
+    color: var(--color-white);
   }
 
   .card__body {

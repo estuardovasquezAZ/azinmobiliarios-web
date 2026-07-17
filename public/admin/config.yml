@@ -22,6 +22,14 @@ collections:
         name: "tipo"
         widget: "select"
         options: ["venta", "renta"]
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        options:
+          - { label: "Disponible", value: "disponible" }
+          - { label: "Reservada", value: "reservada" }
+          - { label: "No disponible (vendida/rentada)", value: "no_disponible" }
+        default: "disponible"
       - label: "Tipo de inmueble"
         name: "tipoInmueble"
         widget: "select"
