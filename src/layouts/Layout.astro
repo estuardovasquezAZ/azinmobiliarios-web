@@ -6,12 +6,16 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title = "Servicios AZ Inmobiliarios | Bienes Raíces en Guatemala",
   description = "Encuentra tu próxima propiedad en venta o renta con Servicios AZ Inmobiliarios. Asesoría profesional y confiable en Guatemala.",
+  image = "/images/logo-full.svg",
 } = Astro.props;
+
+const ogImageUrl = new URL(image, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -28,6 +32,10 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <Header />

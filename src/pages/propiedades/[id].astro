@@ -42,7 +42,7 @@ const whatsappMessage = `Hola, me interesa la propiedad "${titulo}". ¿Podrían 
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
-<Layout title={`${titulo} | Servicios AZ Inmobiliarios`} description={propiedad.data.descripcion}>
+<Layout title={`${titulo} | Servicios AZ Inmobiliarios`} description={propiedad.data.descripcion} image={imagenPortada}>
   <main class="property">
     <div class="property__container">
       <nav class="property__breadcrumb">
