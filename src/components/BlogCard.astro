@@ -1,0 +1,90 @@
+---
+// src/components/BlogCard.astro
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  articulo: CollectionEntry<"blog">;
+}
+
+const { articulo } = Astro.props;
+const { titulo, resumen, imagenPortada, autor, fechaPublicacion } = articulo.data;
+
+const fechaFormateada = new Intl.DateTimeFormat("es-GT", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}).format(fechaPublicacion);
+---
+
+<a href={`/blog/${articulo.id}`} class="card">
+  <div class="card__image-wrap">
+    <img src={imagenPortada} alt={titulo} loading="lazy" />
+  </div>
+
+  <div class="card__body">
+    <p class="card__meta">{fechaFormateada} · {autor}</p>
+    <h3 class="card__title">{titulo}</h3>
+    <p class="card__excerpt">{resumen}</p>
+    <span class="card__read-more">Leer más →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .card__image-wrap {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card__body {
+    padding: 1.25rem;
+  }
+
+  .card__meta {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+  }
+
+  .card__excerpt {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card__read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-blue-medium);
+  }
+</style>

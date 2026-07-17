@@ -1,0 +1,62 @@
+---
+// src/pages/blog/index.astro
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const articulos = await getCollection("blog");
+const ordenados = articulos.sort(
+  (a, b) => b.data.fechaPublicacion.valueOf() - a.data.fechaPublicacion.valueOf()
+);
+---
+
+<Layout title="Blog | Servicios AZ Inmobiliarios" description="Artículos, consejos y noticias sobre el mercado inmobiliario en Guatemala.">
+  <main class="section">
+    <div class="section__container">
+      <h1>Blog</h1>
+      <p class="section__subtitle">Consejos y noticias del mercado inmobiliario</p>
+
+      {ordenados.length > 0 ? (
+        <div class="grid">
+          {ordenados.map((articulo) => <BlogCard articulo={articulo} />)}
+        </div>
+      ) : (
+        <p class="empty">Muy pronto vamos a compartir contenido aquí.</p>
+      )}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .section {
+    padding: 3rem 0 5rem;
+  }
+
+  .section__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .section__subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .empty {
+    color: var(--color-text-muted);
+    padding: 2rem 0;
+  }
+</style>
