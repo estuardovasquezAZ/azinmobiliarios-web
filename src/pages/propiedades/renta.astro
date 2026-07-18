@@ -1,0 +1,62 @@
+---
+// src/pages/propiedades/renta.astro
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import PropertyCard from "../../components/PropertyCard.astro";
+
+const todas = await getCollection("propiedades");
+const enRenta = todas
+  .filter((p) => p.data.tipo === "renta")
+  .sort((a, b) => b.data.fechaPublicacion.valueOf() - a.data.fechaPublicacion.valueOf());
+---
+
+<Layout title="Propiedades en Renta | Servicios AZ Inmobiliarios" description="Explora nuestras propiedades en renta en Guatemala.">
+  <main class="section">
+    <div class="section__container">
+      <h1>Propiedades en renta</h1>
+      <p class="section__subtitle">{enRenta.length} propiedades encontradas</p>
+
+      {enRenta.length > 0 ? (
+        <div class="grid">
+          {enRenta.map((propiedad) => <PropertyCard propiedad={propiedad} />)}
+        </div>
+      ) : (
+        <p class="empty">No hay propiedades en renta disponibles en este momento.</p>
+      )}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .section {
+    padding: 3rem 0 5rem;
+  }
+
+  .section__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .section__subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .empty {
+    color: var(--color-text-muted);
+    padding: 2rem 0;
+  }
+</style>
