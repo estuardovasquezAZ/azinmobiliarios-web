@@ -82,8 +82,8 @@ La propiedad se comercializa principalmente como terreno, aunque actualmente cue
 
 ### ✅ Extras
 
-- Pared propia.
-- Pared reforzada para construir un segundo nivel.
+- Pared propia en un 75% 
+- Pared al fondo reforzada para construir un segundo nivel.
 
 ***
 
