@@ -65,7 +65,7 @@ La propiedad puede adquirirse completa o la mitad.
 
 ## 🏠 Características
 
-La propiedad se comercializa principalmente como terreno, aunque actualmente cuenta con construcciones funcionales:
+La propiedad se comercializa principalmente como terreno, aunque actualmente cuenta con construcciones funcionales. La construcción actual es de tipo mixto, conformada aproximadamente por **70% muros de block y 30% muros de adobe**.
 
 - Muro perimetral
 - Jardín frontal
