@@ -1,5 +1,5 @@
 ---
-titulo: Casa en venta en Condominio Vista Azul
+titulo: Casa en venta en Condominio Vista Azul zona 10 SCP
 tipo: venta
 tipoInmueble: casa
 precio:
@@ -41,9 +41,9 @@ fechaPublicacion: 2026-07-06T14:36
 
 # ## Casa en Venta – Condominio Vista Azul
 
-Lista para escriturar y lista para habitar.
+Lista para escriturar y  habitar.
 
----
+***
 
 ### Ubicación
 
@@ -52,44 +52,29 @@ Lista para escriturar y lista para habitar.
 Una ubicación estratégica con fácil acceso a:
 
 - Plaza comercial
-
 - Panaderías
-
 - Farmacias
-
 - Abarroterías
-
 - Colegios
-
 - Comercios y servicios
 
----
+***
 
 ### Características
 
 - 3 dormitorios
-
 - Parqueo techado para 2 vehículos
-
 - Sala y comedor
-
 - Cocina equipada
-
-  - Top eléctrico
-
-  - Extractor de olores
-
+    - Top eléctrico
+    - Extractor de olores
 - Dormitorio principal con clósets de madera
-
 - Espacio para almacenamiento en todas las habitaciones
-
 - Área de lavandería independiente
-
 - Conexiones para lavadora y secadora
-
 - Calentador eléctrico de paso para toda la vivienda
 
----
+***
 
 ### Documentación
 
@@ -99,7 +84,7 @@ Una ubicación estratégica con fácil acceso a:
 
 ✓ Documentación completa y lista para escriturar
 
----
+***
 
 ### Información y citas
 
