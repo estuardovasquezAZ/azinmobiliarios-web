@@ -1,5 +1,5 @@
 ---
-titulo: ¿Conoces realmente tu situación financiera? El primer paso antes de comprar, alquilar o invertir
+titulo: ¿Conoces realmente tu situación financiera?
 resumen: Comprar una casa, alquilar un apartamento o realizar una inversión inmobiliaria son decisiones que pueden transformar tu futuro financiero. Sin embargo, antes de comenzar a buscar la propiedad ideal, existe una pregunta mucho más importante que pocas personas se hacen.
 imagenPortada: /images/uploads/D289D875-A804-4CA9-867B-3409BEBBA7A9.png
 autor: Estuardo Vásquez
